@@ -1,0 +1,48 @@
+﻿@page "{id:int?}"
+@model ListagemModel
+@{
+    ViewData["Title"] = "Listagem de Clientes";
+    Layout = "~/Pages/Shared/_Pai.cshtml";
+}
+
+<div class="form-row">
+    <div class="form-group col-md-9">
+        <input type="text" asp-for="nomeBusca" placeholder="Informe o nome do cliente" class="form-control" />
+    </div>
+    <div class="form-group col-md-2">
+        <input type="submit" class="btn btn-link " value="Localizar" name="btnControle" />
+    </div>
+    <div class="form-group col-md-1">
+        <a asp-area="" asp-page="Clientes">Novo</a>
+    </div>
+</div>
+<div style="height:600px;overflow:scroll">
+    <table id="tblgrid" width="100%" class="table table-sm">
+        <thead>
+            <tr>
+                <th colspan="6">
+                </th>
+            </tr>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th colspan="4">Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var lista in Model.MostrarTodosClientes())
+                {
+                    <tr>
+                        <td>@lista.id_cliente</td>
+                        <td>@lista.Pessoa.nm_pessoa</td>
+                        <td>@lista.cpf_cnpj</td>
+                        <td><a asp-page="Dados" asp-route-id="@lista.id_cliente">alterar</a></td>
+                        <td><a asp-page="Dados" asp-route-id="@lista.id_cliente">detalhes</a></td>
+                        <td><a asp-page="Listagem" asp-route-id="@lista.id_cliente">Excluir</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

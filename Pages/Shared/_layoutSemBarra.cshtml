@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<link href="~/lib/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<script src="~/lib/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/3.2.1/jquery.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>@ViewData["Title"] - PDV</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    @*<link href="~/lib/fontawesome/v5.0.6/all.css" rel="stylesheet" />*@
+    <link href="~/css/nucleo.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
+
+    @await RenderSectionAsync("Headers", required: false)
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+    <footer class="text-center footer">
+        @await RenderSectionAsync("Footers", required: false)
+        <div class="mb-2">
+            <small>
+                &copy; @DateTime.Today.ToString("yyyy")  - PDV
+            </small>
+        </div>
+    </footer>
+</body>
+</html>

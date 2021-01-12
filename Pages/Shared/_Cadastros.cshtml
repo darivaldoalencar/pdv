@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "_Pai.cshtml";
+}
+
+<main role="main" class="pb-3">     
+    @RenderBody()
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <input type="button" id="btnLimpar" class="btn btn-primary" value="Limpar" name="btnControle" />
+            <input type="submit" class="btn btn-success" value="confirmar" name="btnControle" />
+            <a href="javascript:history.back();" id="linkvoltar">Voltar</a>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            @if (!string.IsNullOrEmpty(@Model.msgErro))
+            {
+                <div id="msgInfo" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Mensagem: </strong> @Model.msgErro
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(@Model.msgSucesso))
+            {
+                <div id="msgInfo" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Mensagem: </strong> @Model.msgSucesso
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $("#btnLimpar").click(function () {
+                $(".form-control").val("");
+                document.getElementById("cliente_nm_cliente").focus();
+            });
+        });
+    </script>
+}

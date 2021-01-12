@@ -1,0 +1,100 @@
+﻿@page "{id:int?}"
+@model DadosModel
+@{
+    ViewData["Title"] = "Clientes";
+    Layout = "~/Pages/Shared/_Cadastros.cshtml";
+}
+
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label>código</label>
+        <input id="cd_cliente" class="form-control" asp-for="cliente.id_cliente" placeholder="AUTOMÁTICO" readonly="readonly" />
+    </div>
+    <div class="form-group col-md-4">
+        <label>Cadastrado</label>
+        <input class="form-control" asp-for="cliente.Pessoa.dt_cadastro" placeholder="CADASTRADO" readonly="readonly" />
+    </div>
+    <div class="form-group col-md-4">
+        <label>Alterado</label>
+        <input class="form-control" asp-for="cliente.Pessoa.dt_alterado" placeholder="ALTERADO" readonly="readonly" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-8">
+        <label>Nome</label>
+        <input class="form-control" asp-for="cliente.Pessoa.nm_pessoa" placeholder="NOME" />
+    </div>
+    <div class="form-group col-md-4">
+        <label>Data Nasc.</label>
+        <input type="date" class="form-control" asp-for="cliente.dt_nascimento" placeholder="DATA DE NASCIMENTO" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label>Tipo Pessoa</label><br />
+        <input class="custom-radio" type="radio" id="fisica" asp-for="cliente.Pessoa.tp_pessoa" name="gender" value="F">
+        <label for="fisica">Pessoa Física</label>&nbsp
+        <input class="custom-radio" type="radio" id="juridica" asp-for="cliente.Pessoa.tp_pessoa" name="gender" value="J">
+        <label for="juridica">Pessoa Jurídica</label>
+    </div>
+    <div class="form-group col-md-4">
+        <label>RG/RNE</label>
+        <input class="form-control" asp-for="cliente.rg_rne" placeholder="RG/RNE" />
+    </div>
+    <div class="form-group col-md-4">
+        <label>CPF/CNPJ</label>
+        <input class="form-control" asp-for="cliente.cpf_cnpj" placeholder="CPF/CNPJ" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label>CEP</label>
+        <input class="form-control" asp-for="cliente.Pessoa.nr_cep" placeholder="CEP" />
+    </div>
+    <div class="form-group col-md-9">
+        <label>Endereço</label>
+        <input class="form-control" placeholder="ENDEREÇO" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label>Bairro</label>
+        <input class="form-control" placeholder="BAIRRO" />
+    </div>
+
+</div>
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <label>Cidade</label>
+        <input class="form-control" placeholder="CIDADE" />
+    </div>
+    <div class="form-group col-md-2">
+        <label>UF</label>
+        <input class="form-control" placeholder="UF" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label>Complemento</label>
+        <input class="form-control" asp-for="cliente.Pessoa.ds_complemento" placeholder="COMPLEMENTO" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label>Observações</label>
+        <input class="form-control" asp-for="cliente.Pessoa.obsr" placeholder="OBSERVAÇÕES" />
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        @if (!ModelState.IsValid)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERRO: </strong> <span class="text-center" asp-validation-for="cliente.Pessoa.nm_pessoa"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }                            
+    </div>
+</div>
